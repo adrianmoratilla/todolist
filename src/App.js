@@ -6,43 +6,35 @@ import { useEffect, useState } from 'react';
 import {v1} from 'uuid';
 
 
+
+
 function App() {
 
-  let list = [
-    {
-      id: 1,
-      title: "Lista1",
-      toDos : [{id: 1, task: "limpiar", complete: false},
-      {id: 2, task: "fregar", complete: false},
-      {id: 3, task: "bailar", complete: false},
-      {id: 4, task: "dormir", complete: false}],
-      complete: false
-    },
-    {
-      id: 2,
-      title: "Lista2",
-      toDos : [{id: 1, task: "limpiar", complete: false},
-      {id: 2, task: "fregar", complete: false},
-      {id: 3, task: "bailar", complete: false},
-      {id: 4, task: "dormir", complete: false}],
-      complete: false
-    }
-  ]
-
   let [toDoList, setToDoList] = useState([]);
-
+  
+    
+  // const filterToDos = (status, id) => {
+  //   setFilter(status)
+  //   let newFilterList = filter === 'complete' 
+  //   ? toDoList.map(list => list.id === id  ? ({...list, toDos: list.toDos.filter((item) => item.complete === true)}) : list)
+  //   : filter === 'active' 
+  //   ? toDoList.map(list => list.id === id  ? ({...list, toDos: list.toDos.filter((item) => item.complete === false)}) : list)
+  //   : toDoList;
+  // }
+  
+  
   useEffect(() => {
     let newList = JSON.parse(localStorage.getItem("toDoList"));
     if (newList){
       setToDoList(newList);
     }
   }, []);
-
+  
   useEffect(() => {
     localStorage.setItem("toDoList", JSON.stringify(toDoList));
   }, [toDoList]);
-  
 
+  
   const addNewList = (e) => {
     e.preventDefault();
     let newList = {
@@ -74,27 +66,26 @@ function App() {
       
   }
 
-  const editTask = (e) => {
+  const editTask = (e, taskId, value) => {
     let listId = e.target.parentNode.parentNode.id;
-    let taskId = e.target.parentNode.id;
     setToDoList(toDoList.map((list) =>  
       list.id === listId  
       ? {...list, toDos: list.toDos.map((item) => 
         item.id === taskId 
-        ? {...item, task: "Verde"} 
+        ? {...item, task: value} 
         : item) }
       : list ) 
       )
   }
 
-  const completeTask = (e) => {
+  const completeTask = (e, status) => {
     let listId = e.target.parentNode.parentNode.id;
     let taskId = e.target.parentNode.id;
     setToDoList(toDoList.map((list) =>  
       list.id === listId  
       ? {...list, toDos: list.toDos.map((item) => 
         item.id === taskId 
-        ? {...item, complete: true} 
+        ? {...item, complete: status} 
         : item) }
       : list ) 
       )
@@ -107,7 +98,7 @@ function App() {
     setToDoList(toDoList.map((list) => list.id === listId ? {...list, toDos: list.toDos.filter((item) => item.id !== taskId)} : list))
 
   }
-
+  
   return (
     <div className="App">
       <Header title="To do list" />
@@ -125,6 +116,7 @@ function App() {
         deleteList={deleteList}
         deleteTask={deleteTask}
         completeTask={completeTask}
+        // filterToDos={filterToDos}
         editTask={editTask}/>
         )
       })
