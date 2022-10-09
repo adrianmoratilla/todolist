@@ -1,0 +1,23 @@
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      // Purple and green play nicely together.
+      main: '#FF4F00',
+    },
+    secondary: {
+      // This is green.A700 as hex.
+      main: '#1B065E',
+    },
+  },
+});
+
+export default function Palette({children}) {
+  return (
+    <ThemeProvider theme={theme}>
+    {children}
+    </ThemeProvider>
+  );
+}
