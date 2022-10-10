@@ -87,7 +87,7 @@ function App() {
     <div className="App">
       <Header title="📝 Lista de tareas" addNewList={addNewList}/>
       
-      <Grid container spacing={2}>
+      <Grid container rowSpacing={5} columnSpacing={1} sx={{mb: 4}}>
       {toDoList.length > 0 
       ? 
       toDoList.map((list, index)=>{

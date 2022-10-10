@@ -44,6 +44,12 @@ export const ToDo = ({ toDo, deleteTask, completeTask, editTask, listId }) => {
         setNewName(toDo.task)
     }
 
+    const handleKeyPress = (e) => {
+        if (e.key === 'Enter'){
+          saveEdit()
+        }
+      }
+
     return (
 
         <ListItem
@@ -93,6 +99,7 @@ export const ToDo = ({ toDo, deleteTask, completeTask, editTask, listId }) => {
                         sx={{width: '85%'}}
                         helperText={errors ? "Introduce una tarea válida" : ""}
                         onChange={(e) => setNewName(e.target.value)}
+                        onKeyPress={handleKeyPress}
                            
                     />
                     :

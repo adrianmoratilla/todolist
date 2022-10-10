@@ -45,26 +45,32 @@ export const ToDoList = ({ list, editList, deleteList, addToDo, deleteTask, comp
     if (newName) {
       editList(list.id, newName)
       setEdit(!edit);
-      setError(false);
+      setError({...errors, title: false});
     } else {
-      setError(true);
+      setError({...errors, title: true});
     }
 
   }
 
   let [newToDo, setNewToDo] = useState("");
-  const [errors, setError] = useState(false);
+  const [errors, setError] = useState({title: false, newToDo: false});
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    newToDo ? addToDo(newToDo, list.id) : setError(true);
+    newToDo ? addToDo(newToDo, list.id) : setError({...errors, newToDo: true});
     setNewToDo("")
   }
 
   const cancelEdit = () => {
     setEdit(!edit)
     setNewName(list.title)
-}
+  }
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter'){
+      saveEdit()
+    }
+  }
 
 
   return (
@@ -78,9 +84,11 @@ export const ToDoList = ({ list, editList, deleteList, addToDo, deleteTask, comp
               variant="standard"
               name="newList"
               value={newName}
-              error={errors ? true : false}
-              helperText={errors ? "Introduce una tarea" : ""}
-              onChange={(e) => setNewName(e.target.value)}
+              error={errors.title ? true : false}
+              sx={{height: '77.76px'}}
+              helperText={errors.title ? "Introduce un título para la lista" : ""}
+              onChange={(e) => {setNewName(e.target.value); setError({...errors, title:false})}}
+              onKeyPress={handleKeyPress}
             />
           : 
           <h3>{list.title}</h3>
@@ -118,9 +126,9 @@ export const ToDoList = ({ list, editList, deleteList, addToDo, deleteTask, comp
           variant="standard"
           name="toDo"
           value={newToDo}
-          error={errors ? true : false}
-          helperText={errors ? "Introduce una tarea" : ""}
-          onChange={(e) => setNewToDo(e.target.value)}
+          error={errors.newToDo ? true : false}
+          helperText={errors.newToDo ? "Introduce una tarea" : ""}
+          onChange={(e) => {setNewToDo(e.target.value); setError({...errors, newToDo:false})}}
         />
         <Button
           variant='outlined'
@@ -132,7 +140,7 @@ export const ToDoList = ({ list, editList, deleteList, addToDo, deleteTask, comp
         return (<ToDo key={toDo.id} toDo={toDo} listId={list.id} deleteTask={deleteTask} editTask={editTask} completeTask={completeTask} />)
       })}
 
-      {list.toDos.length > 0 ?  filterList : <p>¡Añade alguna tarea!</p>}
+      {list.toDos.length > 0 ?  filterList : <p style={{marginTop: '8%'}}>¡Añade alguna tarea!</p>}
       </List>
   )
 }
