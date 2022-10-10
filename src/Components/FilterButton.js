@@ -3,7 +3,7 @@ import { Button } from '@mui/material';
 export function FilterButton(props) {
     return (
       <Button
-        variant='outlined'
+        variant={props.isPressed ? 'contained': 'outlined'}
         type="button"
         className="btn toggle-btn"
         aria-pressed={props.isPressed}

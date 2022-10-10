@@ -9,7 +9,7 @@ export const AddNewList = ({addNewList}) => {
                 variant='outlined' 
                 type="submit"
                 onClick={addNewList}
-                color={"secondary"}
+                color={"white"}
                 
             >
                 {<AddCircleOutlineIcon/>}

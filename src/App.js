@@ -1,11 +1,9 @@
 import './App.css';
 import { Header } from './Components/Header'
-import { ToDoForm } from './Components/AddNewList';
 import { ToDoList } from './Components/ToDoList';
 import { useEffect, useState } from 'react';
 import { Grid } from '@mui/material';
 import {v1} from 'uuid';
-
 
 
 
@@ -37,13 +35,16 @@ function App() {
   }
 
   const addToDo = (toDo, listId) => {
+    let newTask = toDo.charAt(0).toUpperCase() + toDo.slice(1).toLowerCase()
     setToDoList(
-    toDoList.map((list) =>  list.id === listId  ? {...list, toDos: [...list.toDos, {id: v1(), task: toDo, complete: false}]} : list ) 
+    toDoList.map((list) =>  list.id === listId  ? {...list, toDos: [...list.toDos, {id: v1(), task: newTask, complete: false}]} : list ) 
     );
   }
 
   const editList = (id, value) => {
-    setToDoList(toDoList.map(list => list.id === id ? {...list, title: value} : list))
+    let newTitle = value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
+    console.log(newTitle);
+    setToDoList(toDoList.map(list => list.id === id ? {...list, title: newTitle} : list))
   }
 
   const deleteList = (id) => {  
@@ -54,11 +55,12 @@ function App() {
   }
 
   const editTask = (listId, taskId, value) => {
+    let newTask = value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
     setToDoList(toDoList.map((list) =>  
       list.id === listId  
       ? {...list, toDos: list.toDos.map((item) => 
         item.id === taskId 
-        ? {...item, task: value} 
+        ? {...item, task: newTask} 
         : item) }
       : list ) 
       )

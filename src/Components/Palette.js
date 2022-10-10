@@ -4,13 +4,18 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 const theme = createTheme({
   palette: {
     primary: {
-      // Purple and green play nicely together.
       main: '#FF4F00',
+      light: '#ff853c',
+      dark: '#c30f00'
     },
     secondary: {
-      // This is green.A700 as hex.
-      main: '#1B065E',
+      main: '#1446A0',
+      dark: '#001f71',
+      light: '#5670d2'
     },
+    white: {
+        main: '#FFF'
+    }
   },
 });
 

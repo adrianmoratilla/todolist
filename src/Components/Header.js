@@ -7,7 +7,7 @@ import { AddNewList } from './AddNewList';
 export const Header = ({title, addNewList}) => {
   return (
     <Box sx={{ flexGrow: 1, mb: "2%"}} color={"primary"} >
-      <AppBar position="static" >
+      <AppBar position="static" sx={{p:"1%"}}>
         <Toolbar>
           <Typography variant="h4" align="left" component="div" sx={{ flexGrow: 1 }}>
             {title}
