@@ -130,10 +130,10 @@ export const ToDoList = ({ list, editList, deleteList, addToDo, deleteTask, comp
           helperText={errors.newToDo ? "Introduce una tarea" : ""}
           onChange={(e) => {setNewToDo(e.target.value); setError({...errors, newToDo:false})}}
         />
-        <Button
-          variant='outlined'
-          type="submit"
-        >{<AddCircleOutlineIcon />}</Button>
+        <IconButton
+        type="submit"
+        color="primary"
+        >{<AddCircleOutlineIcon />}</IconButton>
       </form>
       
       {list.toDos.filter(FILTER_MAP[filter]).map((toDo) => {

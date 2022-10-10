@@ -1,19 +1,19 @@
-import { Button } from '@mui/material';
+import { IconButton } from '@mui/material';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
 export const AddNewList = ({addNewList}) => {
 
     return(
         <>
-            <Button
+            <IconButton
                 variant='outlined' 
                 type="submit"
                 onClick={addNewList}
                 color={"white"}
-                
+                size="large"
             >
-                {<AddCircleOutlineIcon/>}
-            </Button>
+                {<AddCircleOutlineIcon fontSize="inherit"/>}
+            </IconButton>
         </>
     )
 }

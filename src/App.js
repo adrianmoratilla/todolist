@@ -105,7 +105,7 @@ function App() {
         )
       })
       :
-      <h3 style={{margin: "10% auto"}}>¡Empieza tus listas de tareas!</h3>
+      <h3 style={{margin: "10% auto"}}>¡Crea una nueva lista de tareas!</h3>
       }
     </Grid>
     </div>
