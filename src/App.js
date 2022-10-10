@@ -85,16 +85,15 @@ function App() {
   
   return (
     <div className="App">
-      <Header title="Lista de tareas" addNewList={addNewList}/>
+      <Header title="📝 Lista de tareas" addNewList={addNewList}/>
       
       <Grid container spacing={2}>
       {toDoList.length > 0 
       ? 
       toDoList.map((list, index)=>{
         return(
-        <Grid xs={4}>
+        <Grid key={index} item xs={4}>
           <ToDoList 
-          key={index} 
           list={list} 
           editList={editList}
           addToDo={addToDo}

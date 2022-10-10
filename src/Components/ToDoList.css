@@ -1,0 +1,39 @@
+.list{
+    width: 100%;
+    max-width: 470px;
+    background-color: white;
+    margin: 0 auto !important;
+    padding-inline:  3% !important;
+    padding-bottom: 4% !important;
+    box-shadow: 0 10px 20px rgb(0 0 0 / 19%), 0 6px 6px rgb(0 0 0 / 23%);
+    border-radius: 0.45em
+}
+
+.listTitle{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 5% !important;
+    font-size: 1.3em;
+}
+
+.listTitle input {
+    width: 70%;
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+.buttonContainer{
+    margin-right: 5%
+}
+
+.buttonContainer :last-child {
+    margin-left: 10px
+}
+
+.newTask{
+    margin-bottom: 3%;
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+}

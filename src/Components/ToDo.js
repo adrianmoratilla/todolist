@@ -12,6 +12,8 @@ import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
 
 import CancelRoundedIcon from '@mui/icons-material/CancelRounded';
 import SaveAsRoundedIcon from '@mui/icons-material/SaveAsRounded';
+import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
+import TaskAltIcon from '@mui/icons-material/TaskAlt';
 
 export const ToDo = ({ toDo, deleteTask, completeTask, editTask, listId }) => {
 
@@ -54,7 +56,7 @@ export const ToDo = ({ toDo, deleteTask, completeTask, editTask, listId }) => {
                 <IconButton edge="end" aria-label="edit" onClick={saveEdit} color="secondary">
                     <SaveAsRoundedIcon />
                 </IconButton>
-                <IconButton edge="end" aria-label="cancel" onClick={cancelEdit} color="secondary">
+                <IconButton edge="end" aria-label="cancel" onClick={cancelEdit} color="secondary" className='lastButton'>
                     <CancelRoundedIcon />
                 </IconButton>
                 </> 
@@ -63,7 +65,7 @@ export const ToDo = ({ toDo, deleteTask, completeTask, editTask, listId }) => {
                 <IconButton edge="end" aria-label="edit" onClick={showEdit} color="secondary">
                     <BorderColorRoundedIcon />
                 </IconButton>
-                <IconButton edge="end" aria-label="delete" onClick={() => deleteTask(listId, toDo.id)} color="secondary">
+                <IconButton edge="end" aria-label="delete" onClick={() => deleteTask(listId, toDo.id)} color="secondary" className='lastButton'>
                     <DeleteForeverRoundedIcon />
                 </IconButton>
                 </>            
@@ -72,6 +74,8 @@ export const ToDo = ({ toDo, deleteTask, completeTask, editTask, listId }) => {
             <ListItemButton onClick={edit ? "none" : checkToDo} dense>
 
                 <Checkbox
+                    icon={<RadioButtonUncheckedIcon/>}
+                    checkedIcon={<TaskAltIcon/>}
                     edge="start"
                     checked={toDo.complete ? true : false}
                     tabIndex={-1}
@@ -85,7 +89,8 @@ export const ToDo = ({ toDo, deleteTask, completeTask, editTask, listId }) => {
                         name="newName"
                         value={newName}
                         error={errors ? true : false}
-                        multiline
+                        multiline="true"
+                        sx={{width: '85%'}}
                         helperText={errors ? "Introduce una tarea válida" : ""}
                         onChange={(e) => setNewName(e.target.value)}
                            
@@ -93,8 +98,9 @@ export const ToDo = ({ toDo, deleteTask, completeTask, editTask, listId }) => {
                     :
                     <ListItemText 
                         className= {toDo.complete ? "completed" : ""} 
-                        primary={toDo.task} 
-                        multiline
+                        primary={toDo.task}
+                        primaryTypographyProps={{width: '95%'}}
+                        multiline="true"
                     />  
                 }
             </ListItemButton>

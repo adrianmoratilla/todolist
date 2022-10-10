@@ -2,10 +2,6 @@
     text-decoration: line-through;
 }
 
-.css-et1ao3-MuiTypography-root{
-    width: 90%
-}
-
-.noEvents{
-    pointer-events: none;
+.lastButton{
+    margin-left: 10px !important;
 }

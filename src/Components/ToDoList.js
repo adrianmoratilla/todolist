@@ -2,6 +2,7 @@ import { ToDo } from './ToDo'
 import { useState } from 'react';
 import { FilterButton } from './FilterButton';
 import { Button } from '@mui/material';
+import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
@@ -11,7 +12,7 @@ import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
 import List from '@mui/material/List';
 import SaveAsRoundedIcon from '@mui/icons-material/SaveAsRounded';
 import CancelRoundedIcon from '@mui/icons-material/CancelRounded';
-
+import './ToDoList.css';
 
 const FILTER_MAP = {
   Todas: () => true,
@@ -68,24 +69,24 @@ export const ToDoList = ({ list, editList, deleteList, addToDo, deleteTask, comp
 
   return (
     
-      <List sx={{ width: '100%', maxWidth: 400, bgcolor: 'background.paper' }} id={list.id} style={{margin: '0 auto'}}>
-      <Box sx={{ display: 'flex', justifyContent: "space-between", alignItems: "center"}}> 
+      <List className={'list'} id={list.id}>
+      <Box className={'listTitle'}> 
         {edit
           ? 
-          <TextField
-          label="Añadir tarea"
-          variant="standard"
-          name="newList"
-          value={newName}
-          error={errors ? true : false}
-          helperText={errors ? "Introduce una tarea" : ""}
-          onChange={(e) => setNewName(e.target.value)}
-        />
+            <TextField
+              label="Editar título"
+              variant="standard"
+              name="newList"
+              value={newName}
+              error={errors ? true : false}
+              helperText={errors ? "Introduce una tarea" : ""}
+              onChange={(e) => setNewName(e.target.value)}
+            />
           : 
           <h3>{list.title}</h3>
         }
 
-        <Box>
+        <Box className={'buttonContainer'}>
           {edit 
           ?  
           <>
@@ -110,8 +111,9 @@ export const ToDoList = ({ list, editList, deleteList, addToDo, deleteTask, comp
         </Box>
       </Box>
 
-      <form onSubmit={onSubmitHandler}>
+      <form onSubmit={onSubmitHandler} className={'newTask'}>
         <TextField
+          sx={{width: '70%'}}
           label="Añadir tarea"
           variant="standard"
           name="toDo"
