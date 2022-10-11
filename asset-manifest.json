@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/todolist/static/css/main.6e707748.css",
-    "main.js": "/todolist/static/js/main.9eafe8ff.js",
+    "main.js": "/todolist/static/js/main.6a02bd8c.js",
     "static/js/787.34d05ddd.chunk.js": "/todolist/static/js/787.34d05ddd.chunk.js",
-    "static/media/TareApp Logo.png": "/todolist/static/media/TareApp Logo.e3c916231c466acde0d1.png",
+    "static/media/tareapplogostroked.png": "/todolist/static/media/tareapplogostroked.5a7103541128c4b2adb4.png",
     "index.html": "/todolist/index.html",
     "main.6e707748.css.map": "/todolist/static/css/main.6e707748.css.map",
-    "main.9eafe8ff.js.map": "/todolist/static/js/main.9eafe8ff.js.map",
+    "main.6a02bd8c.js.map": "/todolist/static/js/main.6a02bd8c.js.map",
     "787.34d05ddd.chunk.js.map": "/todolist/static/js/787.34d05ddd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6e707748.css",
-    "static/js/main.9eafe8ff.js"
+    "static/js/main.6a02bd8c.js"
   ]
 }
